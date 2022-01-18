@@ -25,7 +25,7 @@ let account;
 
 const accountEl = document.getElementById('account');
 const ticketsEl = document.getElementById('tickets');
-
+const TOTAL_TICKETS = 10;
 const EMPTY_ADDRESS =
   '0x0000000000000000000000000000000000000000';
 
@@ -37,7 +37,7 @@ const buyTicket = async (ticket) => {
 
 const refreshTickets = async () => {
   ticketsEl.innerHTML = '';
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < TOTAL_TICKETS; i++) {
     const ticket = await contract.methods.tickets(i).call();
     ticket.id = i;
     if (ticket.owner === EMPTY_ADDRESS) {
